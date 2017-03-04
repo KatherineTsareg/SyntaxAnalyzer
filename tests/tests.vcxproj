@@ -18,20 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Runner.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Runner.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="TableRowStruct.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2C7DAF58-2E54-4815-8A8C-A63FF734CB0B}</ProjectGuid>
+    <ProjectGuid>{DF180D4B-18F5-44C6-8D90-AB9AFC1FFECB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>SyntaxAnalyzer</RootNamespace>
+    <RootNamespace>tests</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -155,6 +145,17 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\SyntaxAnalyzer\Runner.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\SyntaxAnalyzer\Runner.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SyntaxAnalyzerTests.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
