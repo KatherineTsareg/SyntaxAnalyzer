@@ -84,23 +84,23 @@ void CRunner::PushInStack(TempStates & states)
 //функция возвращяет FALSE, когда переходит, и TRUE, когда достигли конечного состояния
 bool CRunner::Transit(TempStates & states, size_t seq_length)
 {
-	if (m_table[states.table_pos].transition >= 0)
-	{
-		states.table_pos = m_table[states.table_pos].transition;
-		return false; 
-	}
-
-	//ЕСЛИ ПЕРЕХОДА НЕТ и стек не пустой
-	if (states.stack.size() > 0)
-	{
-		states.table_pos = states.stack.top();
-		states.stack.pop();
-		return false;
-	}
-	
-	//если стек пустой и перехода нет и цепочка не закончилась
 	if (states.sequence_pos < seq_length)
 	{
+		if (m_table[states.table_pos].transition >= 0)
+		{
+			states.table_pos = m_table[states.table_pos].transition;
+			return false;
+		}
+
+		//ЕСЛИ ПЕРЕХОДА НЕТ и стек не пустой
+		if (states.stack.size() > 0)
+		{
+			states.table_pos = states.stack.top();
+			states.stack.pop();
+			return false;
+		}
+
+		//если стек пустой и перехода нет и цепочка не закончилась
 		if (!m_table[states.table_pos].is_error)
 		{
 			++states.table_pos;
@@ -115,8 +115,6 @@ bool CRunner::Transit(TempStates & states, size_t seq_length)
 		return true;
 	}
 	throw exception("DOES NOT EXPECTED END OF SEQUENCE");
-
-
 }
 
 

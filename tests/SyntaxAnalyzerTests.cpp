@@ -29,17 +29,34 @@ Table table = {
 	{ { "end" },0,-1,0,1,0 },
 };
 
-BOOST_AUTO_TEST_CASE(Test_Greates_Common_Denominator)
-{
-	CRunner runner;
-	runner.SetTable(table);
+BOOST_AUTO_TEST_SUITE(NLG_EXAMPLE_TABLE)
+	BOOST_AUTO_TEST_CASE(valid_sequence)
+	{
+		CRunner runner;
+		runner.SetTable(table);
 
-	BOOST_CHECK(runner.Run({ "PROG","id","var","id","begin","st","end" }));
-	BOOST_CHECK(runner.Run({ "PROG","id","var","id",",", "id","begin","st","end" }));
-	BOOST_CHECK(runner.Run({ "PROG","id","var","id",",", "id","begin","st", "st","end" }));
+		BOOST_CHECK(runner.Run({ "PROG","id","var","id","begin","st","end" }));
+		BOOST_CHECK(runner.Run({ "PROG","id","var","id",",", "id","begin","st","end" }));
+		BOOST_CHECK(runner.Run({ "PROG","id","var","id",",", "id","begin","st", "st","end" }));
+		BOOST_CHECK(runner.Run({ "PROG","id","var","id",",", "id","begin","st", "st", "st","end" }));
+	}
+	
+	BOOST_AUTO_TEST_CASE(invalid_sequence_unexpected_token)
+	{
+		CRunner runner;
+		runner.SetTable(table);
 
-	BOOST_CHECK(!runner.Run({ "PROG","id","end" }));
-	BOOST_CHECK(!runner.Run({ "PROG","id","end" }));
-	/*BOOST_CHECK(!runner.Run({ "PROG","id","var","id",",","id","begin","st" }));
-	BOOST_CHECK(!runner.Run({ "PROG","id","var","id",",","id","begin","st", "st" }));*/
-}
+		BOOST_CHECK(!runner.Run({ "PROG","id","end" }));
+		BOOST_CHECK(!runner.Run({ "PROG","id","var","id",",","id", ",","begin","st","end" }));
+		BOOST_CHECK(!runner.Run({ "PROG","id","var","id",",", "id","begin","end" }));
+	}
+
+	BOOST_AUTO_TEST_CASE(invalid_sequence_unexpected_end_of_sequence)
+	{
+		CRunner runner;
+		runner.SetTable(table);
+
+		BOOST_CHECK(!runner.Run({ "PROG","id","var","id",",","id","begin","st" }));
+		BOOST_CHECK(!runner.Run({ "PROG","id","var","id",",","id","begin","st", "st" }));
+	}
+	BOOST_AUTO_TEST_SUITE_END()
