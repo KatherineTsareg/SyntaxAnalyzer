@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="lexer.gen.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Runner.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="grammar.gen.h" />
     <ClInclude Include="Runner.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TableRowStruct.h" />
