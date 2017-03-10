@@ -12,7 +12,7 @@
 <statement_list> : <statement> <statement_list> 
                  | <> 
 <statement> : <if_statement> 
-            | <const_assign> 
+            | <const_assign> NEWLINE
             | <declar> NEWLINE 
             | <assign> NEWLINE 
             | <while_statement> 

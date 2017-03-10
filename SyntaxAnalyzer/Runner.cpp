@@ -5,13 +5,13 @@ using namespace std;
 
 string ConcatStringSet(const set<string>& stringSet)
 {
-	string result = "( ";
+	string result = "";
 	for (auto &str : stringSet)
 	{
 		result += str + " ";
 	}
 
-	return result + ")";
+	return result;
 }
 
 CRunner::CRunner()

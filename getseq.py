@@ -10,6 +10,6 @@ def getListTerminals(lin):
 
 strr = raw_input("Input string: ")
 listt = strr.split(" ")
-print "{" + getListTerminals(listt) + "}"
+print "BOOST_CHECK(runner.Run({" + getListTerminals(listt) + "}));"
 
 
