@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lexer.gen.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Runner.cpp" />
     <ClCompile Include="stdafx.cpp" />
@@ -29,6 +28,7 @@
     <ClInclude Include="Runner.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TableRowStruct.h" />
+    <ClInclude Include="Tables.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2C7DAF58-2E54-4815-8A8C-A63FF734CB0B}</ProjectGuid>

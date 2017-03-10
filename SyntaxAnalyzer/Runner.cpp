@@ -53,7 +53,9 @@ bool CRunner::Run(std::vector<std::string> const& sequence)
 {
 	try
 	{
-		return RunImpl(sequence);
+		RunImpl(sequence);
+		cout << "Succses...\n";
+		return true;
 	}
 	catch (const exception & ex)
 	{
@@ -106,7 +108,7 @@ bool CRunner::Transit(TempStates & states, size_t seq_length)
 			++states.table_pos;
 			return false;
 		}
-		throw exception("ERROR");
+		throw exception((string("ERROR in ") + std::to_string(states.table_pos)).c_str());
 	}
 
 	//Цепочка закончтлась

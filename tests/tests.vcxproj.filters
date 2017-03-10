@@ -24,6 +24,9 @@
     <ClInclude Include="..\SyntaxAnalyzer\Runner.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="..\SyntaxAnalyzer\Tables.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

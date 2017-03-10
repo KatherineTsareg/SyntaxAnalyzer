@@ -1,0 +1,77 @@
+<s> : <function_list> MAIN <construction> 
+<function_list> : <function> <function_list> 
+                | <> 
+<function> : FUNCTIONID ( <argument_list> ) <construction> 
+           | NEWLINE 
+<argument_list> : <typename> ID <argument_list_1> 
+                | <> 
+<argument_list_1> : , <typename> ID <argument_list_1> 
+                  | <> 
+<construction> : OPEN <construction_1> 
+<construction_1> : <statement_list> CLOSE 
+<statement_list> : <statement> <statement_list> 
+                 | <> 
+<statement> : <if_statement> 
+            | <const_assign> 
+            | <declar> NEWLINE 
+            | <assign> NEWLINE 
+            | <while_statement> 
+            | CALL <condition_expr>
+            | READ <condition_expr>
+            | PRINT <condition_expr>
+            | RETURN <condition_expr> 
+            | NEWLINE 
+<if_statement> : <one_if_statement> <if_statement_app> 
+<one_if_statement> : IF <condition_expr> <construction> 
+<if_statement_app> : <elif_statement> <else_statement> 
+<elif_statement> : ELIF <non_paren> <construction> <elif_statement> 
+                 | <> 
+<else_statement> : ELSE <construction>
+                 | <> 
+<while_statement> : WHILE <condition_expr> <construction> 
+                  | DO <construction> WHILE <condition_expr> 
+<condition_expr> : <non_paren> NEWLINE
+<const_assign> : CONST <typename> ID = <right_assign> 
+<declar> : <declar_1> <declar_2> 
+<declar_1> : <typename> ID
+<typename> : <list_declar_left> 
+           | TYPENAME 
+<list_declar_left> : LIST OF <list_declar_left_1> 
+<list_declar_left_1> : <list_declar_left> 
+                     | TYPENAME 
+<declar_2> : = <right_assign> 
+           | <> 
+<assign> : <index> = <right_assign> 
+<list> : LESS <list_row> MORE 
+<function_call> : FUNCTIONID ( <list_row> ) 
+<list_row> : <list_row_2> 
+           | <> 
+<list_row_1> : , <list_row_2> 
+             | <> 
+<list_row_2> : <right_assign> <list_row_1> 
+<right_assign> : <list> 
+               | <atom>             
+<non_paren> : <atom> <non_paren_1> 
+<non_paren_1> : <act> <non_paren> 
+              | <> 
+<act> : LESS 
+      | MORE 
+      | LESSOREQUAL 
+      | MOREOREQUAL 
+      | == 
+      | != 
+      | + 
+      | - 
+      | * 
+      | / 
+      | %  
+<atom> : INT 
+       | FLOAT 
+       | BOOL
+       | <index> 
+       | <function_call>           
+       | ( <non_paren> )
+<index> : ID <multidimensional_index> 
+<multidimensional_index> : [ <atom> ] <multidimensional_index> 
+                         | VAL
+						 | REF

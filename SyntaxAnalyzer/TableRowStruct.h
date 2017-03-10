@@ -11,3 +11,4 @@ struct TableRow
 	bool is_end;
 };
 
+typedef std::vector<TableRow> Table;
