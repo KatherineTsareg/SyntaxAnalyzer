@@ -9,6 +9,10 @@ int main()
 
 	CRunner runner;
 	runner.SetTable(LL1_table);
-	runner.Run({ "MAIN", "OPEN", "PRINT", "(", "(", "(", "(", "INT", "*", "INT", ")", "-", "(", "INT", "%", "INT", ")", ")", "/", "INT", ")", "==", "(", "INT", "+", "INT", ")", ")", "NEWLINE", "CLOSE" });
+
+	runner.Run({ "FUNCTIONID", "(", "TYPENAME", "ID",")", "OPEN", "PRINT", "(", "INT", "+", "INT", ")", "NEWLINE", "CLOSE", 
+				 "FUNCTIONID", "(", "TYPENAME", "ID",")", "OPEN", "PRINT", "(", "INT", "+", "INT", ")", "NEWLINE", "CLOSE", 
+				 "MAIN", "OPEN", "CALL", "FUNCTIONID", "(", "INT", ",", "INT", ")", "NEWLINE", 
+				"CALL", "FUNCTIONID", "(", "INT", ",", "INT", ")", "NEWLINE", "CLOSE" });
 	return 0;
 }

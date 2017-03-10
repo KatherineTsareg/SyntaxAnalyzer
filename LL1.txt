@@ -16,7 +16,7 @@
             | <declar> NEWLINE 
             | <assign> NEWLINE 
             | <while_statement> 
-            | CALL <condition_expr>
+            | CALL <function_call> NEWLINE
             | READ <condition_expr>
             | PRINT <condition_expr>
             | RETURN <condition_expr> 
