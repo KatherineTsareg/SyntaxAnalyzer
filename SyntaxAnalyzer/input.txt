@@ -1,0 +1,24 @@
+BUBBLESORT (List Of Int myList, Int size){
+	Int i = 0
+	While i.Val < (size.Val - 1)
+	{
+		Bool swap = False
+		Int j = 0
+		While j.Val < (size.Val - 1 - i.Val)
+		{
+			If (myList[j.Val].Val > myList[(j.Val + 1)].Val)
+			{
+				b.Val = myList[j.Val].Val
+				myList[j.Val].Val = myList[(j.Val + 1)].Val
+				myList[(j.Val + 1)].Val = b.Val
+				swap.Val = True
+			}
+		}
+		i.Val = (i.Val + 1)
+	}
+}Main{
+	List Of Int myNewList = <0, 1, 2, 3, 4>
+	Call BUBBLESORT(myNewList.Ref, 5)
+	Print myNewList.Ref
+	b.Val = 5 + 12 -(45 -36)) * 2
+}
