@@ -21,7 +21,10 @@ public:
 private:
 	Table m_table;
 
-	void DoShift(TempStates & states);
+	size_t m_current_line = 1;
+	size_t m_current_position = 1;
+
+	void DoShift(TempStates & states, bool isNewLine);
 	void PushInStack(TempStates & states);
 	bool Transit(TempStates & states, size_t seq_length);
 	bool RunImpl(std::vector<std::string> const& sequence);

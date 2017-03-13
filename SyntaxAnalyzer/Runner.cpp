@@ -32,7 +32,7 @@ bool CRunner::RunImpl(std::vector<std::string> const & sequence)
 		if (m_table[states.table_pos].start_set.count(sequence[states.sequence_pos]) == 1) //если елемент из цепочки соответствует направляющему множеству
 		{
 			PushInStack(states);
-			DoShift(states);
+			DoShift(states, sequence[states.sequence_pos] == "NEWLINE");
 			if (Transit(states, sequence.size()))
 			{
 				return true;
@@ -40,7 +40,7 @@ bool CRunner::RunImpl(std::vector<std::string> const & sequence)
 		}
 		else if (m_table[states.table_pos].is_error)// фатальная ошибка
 		{
-			throw exception((string("Expected ") + ConcatStringSet(m_table[states.table_pos].start_set) + "at pos " + std::to_string(states.sequence_pos) + ".\nNOT " + sequence[states.sequence_pos]).c_str());
+			throw exception((string("Expected ") + ConcatStringSet(m_table[states.table_pos].start_set) + "at line " + std::to_string(m_current_line) + ", position " + std::to_string(m_current_position) + " but recieved " + sequence[states.sequence_pos]).c_str());
 		}
 		else //переходим на строку ниже в таблице
 		{
@@ -69,9 +69,22 @@ CRunner::~CRunner()
 {
 }
 
-void CRunner::DoShift(TempStates & states)
+void CRunner::DoShift(TempStates & states, bool isNewLine)
 {
-	states.sequence_pos += (m_table[states.table_pos].shift ? 1 : 0);//сдвиг по SEQUENCE
+	auto isShift = m_table[states.table_pos].shift;
+	if (isShift)
+	{
+		states.sequence_pos++; //сдвиг по SEQUENCE
+		if (isNewLine)
+		{
+			m_current_line++;
+			m_current_position = 1;
+		}
+		else
+		{
+			m_current_position++;
+		}
+	}
 }
 
 void CRunner::PushInStack(TempStates & states)
